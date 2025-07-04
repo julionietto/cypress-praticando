@@ -8,8 +8,8 @@ on:
 
 jobs:
     cypress-run:
-        #máquina onde será executado a pipeline
-        run-on: ubuntu-latest
+               #máquina onde será executado a pipeline
+               run-on: ubuntu-latest
 
         steps: 
               # Clone do projeto
