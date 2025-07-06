@@ -10,7 +10,6 @@ jobs:
     cypress-run:
                #máquina onde será executado a pipeline
                run-on: ubuntu-latest
-
         steps: 
               # Clone do projeto
             - name: Checkout/Clone do projeto
