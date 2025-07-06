@@ -21,11 +21,11 @@ jobs:
         run: npm install
 
       # Execução dos testes na pipeline
-      - name: Executar testes 
+      - name: Run testes 
         uses: cypress-io/github-action@v6
         with:
           record: true
-          env: 
+        env: 
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
 
       - name: upload relatorio de testes
