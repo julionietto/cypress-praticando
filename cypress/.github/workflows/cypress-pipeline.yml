@@ -7,28 +7,29 @@ on:
     branches: [master]
 
 jobs:
-    cypress-run:
-               #máquina onde será executado a pipeline
-               run-on: ubuntu-latest
-        steps: 
-              # Clone do projeto
-            - name: Checkout/Clone do projeto
-              uses: actions/checkout@v4
+  cypress-run:
+      #máquina onde será executado a pipeline
+    runs-on: ubuntu-latest
 
-              # Se for necessário adicionar algo no projeto pode ser configurado aqui
-            - name: instalar dependencias no projeto
-              run: echo "Instalando alguma coisa que for necessário"  
+    steps:
+      # Clone do projeto
+      - name: Checkout/Clone do projeto
+        uses: actions/checkout@v4
 
-              # Execução dos testes na pipeline
-            - name: Executar testes 
-              uses: cypress-io/github-action@v6
-              with:
-                record: true
-              env:
-                CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+      # Se for necessário adicionar algo no projeto pode ser configurado aqui
+      - name: instalar dependencias no projeto
+        run: npm install
 
-            - name: upload relatorio de testes
-              uses: actions/upload-artifact@v4
-              with:
-                name: Relatório
-                path: cypress\reports\html
+      # Execução dos testes na pipeline
+      - name: Executar testes 
+        uses: cypress-io/github-action@v6
+        with:
+          record: true
+          env: 
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+
+      - name: upload relatorio de testes
+        uses: actions/upload-artifact@v4
+        with:
+          name: Relatório
+          path: cypress\reports\html
